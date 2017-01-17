@@ -181,7 +181,7 @@ module.exports = {
     "newline-after-var": 0,                // allow/disallow an empty newline after var statement (off by default)
     "no-array-constructor": 2,             // disallow use of the Array constructor
     "no-continue": 0,                      // disallow use of the continue statement (off by default)
-    "no-inline-comments": 1,               // disallow comments inline after code (off by default)
+    "no-inline-comments": 0,               // disallow comments inline after code (off by default)
     "no-lonely-if": 2,                     // disallow if as the only statement in an else block (off by default)
     "no-mixed-spaces-and-tabs": 2,         // disallow mixed spaces and tabs for indentation
     "no-multiple-empty-lines": 1,          // disallow multiple empty lines (off by default)
