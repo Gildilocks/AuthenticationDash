@@ -8,7 +8,9 @@ module.exports = function(app, passport) {
 
   // login page
   app.get('/login', function(req, res) {
-    res.render('login.ejs');
+    res.render('login.ejs', {
+      message: req.flash('loginMessage') // render the page with passed in flash data
+    });
   });
 
   // process the signup form
