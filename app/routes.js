@@ -11,15 +11,21 @@ module.exports = function(app, passport) {
     res.render('login.ejs');
   });
 
-  // app.post('/login', function(req, res) {
-  //   //passport stuff
-  // })
+  app.post('/login', function(req, res) {
+    console.log(req.body);
+    //  passport stuff
+  });
 
   // signup page
   app.get('/signup', function(req, res) {
     res.render('signup.ejs', {
       message: req.flash('signupMessage') // render the page with passed in flash data
     });
+  });
+
+  app.post('/signup', function(req, res) {
+    console.log(req.body);
+    //  passport stuff
   });
 
   app.get('/profile', isLoggedIn, function(req, res) {
