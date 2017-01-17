@@ -3,6 +3,7 @@ module.exports = function(app, passport) {
   // homepage
   app.get('/', function(req, res) {
     res.render('index.ejs');
+    // res.sendfile('index.html');
   });
 
   // login page
