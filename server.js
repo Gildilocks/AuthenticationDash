@@ -13,7 +13,7 @@ var session = require('express-session');
 
 var dbConfig = require('./config/database.js'); 
 
-// require('./config/passport.js')(passport); // pass passport to func for config
+require('./config/passport.js')(passport); // pass passport to func for config
 mongoose.connect(dbConfig.url); // connect to the database
 
 // set up express middleware

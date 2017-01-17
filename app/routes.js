@@ -11,10 +11,12 @@ module.exports = function(app, passport) {
     res.render('login.ejs');
   });
 
-  app.post('/login', function(req, res) {
-    console.log(req.body);
-    //  passport stuff
-  });
+  // process the signup form
+  app.post('/login', passport.authenticate('local-login', {
+    successRedirect: '/profile', // redirect to the secure profile section
+    failureRedirect: '/login', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
+  }));
 
   // signup page
   app.get('/signup', function(req, res) {
@@ -25,9 +27,9 @@ module.exports = function(app, passport) {
 
   // process the signup form
   app.post('/signup', passport.authenticate('local-signup', {
-    successRedirect : '/profile', // redirect to the secure profile section
-    failureRedirect : '/signup', // redirect back to the signup page if there is an error
-    failureFlash : true // allow flash messages
+    successRedirect: '/profile', // redirect to the secure profile section
+    failureRedirect: '/signup', // redirect back to the signup page if there is an error
+    failureFlash: true // allow flash messages
   }));
 
 
