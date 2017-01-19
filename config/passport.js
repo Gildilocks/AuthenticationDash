@@ -1,7 +1,13 @@
-// load the strategy
+// load local strategy
 var LocalStrategy = require('passport-local').Strategy;
 // include local passport callbacks
 var LocalCb = require('./passport_callbacks/local.js');
+// load fb sstrategy
+var FBStrategy = require('passport-facebook').Strategy;
+// include facebook passport callbacks
+var FBCb = require('./passport_callbacks/fb.js')
+// import config varibles
+var configAuth = require('./auth.js');
 // load the user model
 var User = require('../app/models/user');
 
@@ -23,7 +29,7 @@ module.exports = function(passport) {
     });
   });
 
-  // local signup ----------------------------------------------------
+  // local signup --------------------------------------------------------
   passport.use('local-signup', new LocalStrategy({
     // by default, local strategy uses username and password 
     // we will override with email
@@ -34,7 +40,7 @@ module.exports = function(passport) {
     LocalCb.signup
   ));
 
-  //local login ----------------------------------------------------
+  //local login ----------------------------------------------------------
   passport.use('local-login', new LocalStrategy({
   // by default, local strategy uses username and password, we will override with email
     usernameField : 'email',
@@ -43,6 +49,20 @@ module.exports = function(passport) {
   },
     LocalCb.login
   ));
+
+  // facebook login ------------------------------------------------------
+  passport.use(new FBStrategy({
+    // pull in our app id and secret from our auth.js file
+    clientID    : configAuth.facebookAuth.clientID,
+    clientSecret: configAuth.facebookAuth.clientSecret,
+    callbackURL : configAuth.facebookAuth.callbackURL
+  },
+    FBCb.login
+  ));
+
+  // twitter login -------------------------------------------------------
+
+  // google login --------------------------------------------------------
 
 };
 

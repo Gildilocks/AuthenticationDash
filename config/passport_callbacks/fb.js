@@ -1,1 +1,3 @@
-fb.js
+module.exports = {
+  login: null
+}
