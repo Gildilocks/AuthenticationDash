@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
     });
   });
 
-  // process the signup form
+  // process the login form
   app.post('/login', passport.authenticate('local-login', {
     successRedirect: '/profile', // redirect to the secure profile section
     failureRedirect: '/login', // redirect back to the signup page if there is an error
@@ -33,6 +33,11 @@ module.exports = function(app, passport) {
     failureRedirect: '/signup', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
+
+  // route to process facebook authentication and login
+  app.get('/auth/facebook', passport.authenticate('facebook', {scope: 'email'}));
+
+
 
 
   app.get('/profile', isLoggedIn, function(req, res) {
