@@ -35,7 +35,7 @@ module.exports = function(app, passport) {
   }));
 
   // route to process facebook authentication and login       // try adding different things to the scope!!!! and add them to the database, and to the profile view if successful
-  app.get('/auth/facebook', passport.authenticate('facebook', {scope: ['emails']}));
+  app.get('/auth/facebook', passport.authenticate('facebook'));
 
   //
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {

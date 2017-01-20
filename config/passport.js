@@ -6,6 +6,8 @@ var LocalCb = require('./passport_callbacks/local.js');
 var FBStrategy = require('passport-facebook').Strategy;
 // include facebook passport callbacks
 var FBCb = require('./passport_callbacks/fb.js');
+var TwitStrategy = require('passport-twitter').Strategy;
+var TwitCb = require('./passport_callbacks/twitter.js');
 // import config varibles
 var configAuth = require('./auth.js');
 // load the user model
