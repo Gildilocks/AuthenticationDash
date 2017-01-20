@@ -63,6 +63,13 @@ module.exports = function(passport) {
   ));
 
   // twitter login -------------------------------------------------------
+  passport.use(new TwitStrategy({
+    consumerKey     : configAuth.twitterAuth.consumerKey,
+    consumerSecret  : configAuth.twitterAuth.consumerSecret,
+    callbackURL     : configAuth.twitterAuth.callbackURL
+  },
+    TwitCb.login
+  ));
 
   // google login --------------------------------------------------------
 

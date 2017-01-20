@@ -7,6 +7,9 @@ module.exports = {
       // asynchronous
     process.nextTick(function() {
 
+      console.log('FACEBOOK PROFILE DETAILS:', profile); // I had to print the profile so I could see what information I could grab from it
+      // apperaerntly, even though I specified in the scope that i want email, i still cant have it along with my useranme and gender
+
       // find the user in the database based on their facebook id
       User.findOne( {'facebook.id': profile.id}, function(err, user) {
 
@@ -22,10 +25,6 @@ module.exports = {
         } else {
           // if there is no user found with that facebook id, create them
           var newUser = new User();
-
-          console.log('FACEBOOK PROFILE DETAILS:', profile); // I had to print the profile so I could see what information I could grab from it
-          // apperaerntly, even though I specified in the scope that i want email, i still cant have it along with my useranme and gender
-
           // set all of the facebook information in our user model
           newUser.facebook.id    = profile.id; // set the users facebook id                   
           newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
