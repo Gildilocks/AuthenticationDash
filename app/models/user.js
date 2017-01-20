@@ -9,7 +9,7 @@ var userSchema = mongoose.Schema({
   facebook: {
     id:    String,
     token: String,
-    email: String,
+    // email: String, remove from schema because this information is not in the profile object
     name:  String
   },
   twitter: {
