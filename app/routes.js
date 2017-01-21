@@ -34,14 +34,24 @@ module.exports = function(app, passport) {
     failureFlash: true // allow flash messages
   }));
 
-  // route to process facebook authentication and login       // try adding different things to the scope!!!! and add them to the database, and to the profile view if successful
+  // facebook route ------------------------------------------------------
+  // route to process facebook authentication and login 
   app.get('/auth/facebook', passport.authenticate('facebook'));
 
-  //
   app.get('/auth/facebook/callback', passport.authenticate('facebook', {
     successRedirect: '/profile',
     failureRedirect: '/'
   }));
+
+  // twitter route -------------------------------------------------------
+  app.get('/auth/twitter', passport.authenticate('twitter'));
+
+  app.get('/auth/twitter/callback', passport.authenticate('twitter', {
+    successRedirect: '/profile',
+    failureRedirect: '/'
+  }));
+
+  // google route -------------------------------------------------------
 
 
   app.get('/profile', isLoggedIn, function(req, res) {
