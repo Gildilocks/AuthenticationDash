@@ -51,7 +51,7 @@ module.exports = function(app, passport) {
     failureRedirect: '/'
   }));
 
-  // google route -------------------------------------------------------
+  // google route --------------------------------------------------------
 
 
   app.get('/profile', isLoggedIn, function(req, res) {

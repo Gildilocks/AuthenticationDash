@@ -24,6 +24,7 @@ module.exports = {
 
           // set all of the user data that we need
           newUser.twitter.id          = profile.id;
+          // the token does not change between login, there is no need to chang it in the database
           newUser.twitter.token       = token;
           newUser.twitter.username    = profile.username;
           newUser.twitter.displayName = profile.displayName;

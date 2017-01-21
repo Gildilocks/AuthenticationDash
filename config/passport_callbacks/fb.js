@@ -21,7 +21,7 @@ module.exports = {
 
       // if the user is found, then log them in
         if (user) {
-          // the token will change each time the user logs in, so if you want to use it to access the API on thier behalf youhave to keep updating it
+          // the token will change each time the user logs in, so if you want to use it to access the API on thier behalf you have to keep updating it in the database
           user.facebook.token = token;
           user.save(function(err) {
             if (err) {
