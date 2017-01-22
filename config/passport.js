@@ -8,6 +8,8 @@ var FBStrategy = require('passport-facebook').Strategy;
 var FBCb = require('./passport_callbacks/fb.js');
 var TwitStrategy = require('passport-twitter').Strategy;
 var TwitCb = require('./passport_callbacks/twitter.js');
+var GoogStrategy = require('passport-google-oauth').OAuth2Strategy;
+var GoogCB = require('./passport_callbacks/google.js');
 // import config varibles
 var configAuth = require('./auth.js');
 // load the user model
@@ -64,14 +66,21 @@ module.exports = function(passport) {
 
   // twitter login -------------------------------------------------------
   passport.use(new TwitStrategy({
-    consumerKey     : configAuth.twitterAuth.consumerKey,
-    consumerSecret  : configAuth.twitterAuth.consumerSecret,
-    callbackURL     : configAuth.twitterAuth.callbackURL
+    consumerKey   : configAuth.twitterAuth.consumerKey,
+    consumerSecret: configAuth.twitterAuth.consumerSecret,
+    callbackURL   : configAuth.twitterAuth.callbackURL
   },
     TwitCb.login
   ));
 
   // google login --------------------------------------------------------
+  passport.use(new GoogStrategy({
+    clientID    : configAuth.googleAuth.clientID,
+    clientSecret: configAuth.googleAuth.clientSecret,
+    callbackURL : configAuth.googleAuth.callbackURL,
+  },
+    GoogCB.login
+  ));
 
 };
 
