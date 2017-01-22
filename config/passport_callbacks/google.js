@@ -21,21 +21,21 @@ module.exports = {
           return done(null, user); // user found, return that user
         } else {
           // if there is no user, create them
-          // var newUser = new User();
+          var newUser = new User();
 
           // set all of the user data that we need
-          // newUser.google.id    = profile.id;
-          // newUser.google.token = token;
-          // newUser.google.name  = profile.displayName;
-          // newUser.google.email = profile.emails[0].value; // pull the first email
+          newUser.google.id    = profile.id;
+          newUser.google.token = token;
+          newUser.google.name  = profile.displayName;
+          newUser.google.email = profile.emails[0].value; // pull the first email
 
           // save our user into the database
-          // newUser.save(function(err) {
-          //   if (err) {
-          //     throw err;
-          //   }
-          //   return done(null, newUser);
-          // });
+          newUser.save(function(err) {
+            if (err) {
+              throw err;
+            }
+            return done(null, newUser);
+          });
         }
       });
     });

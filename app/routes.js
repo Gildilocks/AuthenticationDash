@@ -58,7 +58,16 @@ module.exports = function(app, passport) {
     passport.authenticate('google', {
       successRedirect : '/profile',
       failureRedirect : '/'
-    }));
+    })
+    );
+
+  // app.get('/auth/google/success', function(req, res) {
+  //   res.redirect('/profile');
+  // });
+
+  // app.get('/auth/google/failure', function(req, res) {
+  //   res.redirect('/');
+  // });
 
   app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile.ejs', {
