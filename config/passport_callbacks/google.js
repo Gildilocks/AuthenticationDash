@@ -18,7 +18,16 @@ module.exports = {
 
         // if the user is found then log them in
         if (user) {
-          return done(null, user); // user found, return that user
+          user.google.token = token;
+
+          user.save(function(err) {
+            if(err) {
+              throw err;
+            }
+            return done(null, user); // user found, return that user
+          });
+
+          
         } else {
           // if there is no user, create them
           var newUser = new User();
