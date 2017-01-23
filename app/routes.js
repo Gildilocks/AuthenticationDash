@@ -59,17 +59,17 @@ module.exports = function(app, passport) {
       successRedirect : '/profile',
       failureRedirect : '/'
     })
-    );
+  );
   
   // google route --------------------------------------------------------
   app.get('/auth/github', passport.authenticate('github', {scope: ['user:email']}));
 
   app.get('/auth/github/callback',
-    passport.authenticate('google', {
+    passport.authenticate('github', {
       successRedirect : '/profile',
       failureRedirect : '/'
     })
-    );
+  );
 
 
   app.get('/profile', isLoggedIn, function(req, res) {

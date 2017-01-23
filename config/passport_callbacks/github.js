@@ -4,7 +4,7 @@ module.exports = {
   login: function(accessToken, refreshToken, profile, done) {
     console.log('GITHUB PROFILE INFO:', profile);
 
-    User.findOne({'google.id': profile.id}, function (err, user) {  
+    User.findOne({'github.id': profile.id}, function (err, user) {  
       if (err) { // if theres an error call done with the error
         return done(err);
       }
