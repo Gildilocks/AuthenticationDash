@@ -10,6 +10,8 @@ var TwitStrategy = require('passport-twitter').Strategy;
 var TwitCb = require('./passport_callbacks/twitter.js');
 var GoogStrategy = require('passport-google-oauth').OAuth2Strategy;
 var GoogCB = require('./passport_callbacks/google.js');
+var GitStrategy = require('passport-github');
+var GitCb = require('./passport_callbacks/github.js');
 // import config varibles
 var configAuth = require('./auth.js');
 // load the user model
@@ -80,6 +82,13 @@ module.exports = function(passport) {
     callbackURL : configAuth.googleAuth.callbackURL,
   },
     GoogCB.login
+  ));
+
+  // github login --------------------------------------------------------
+  passport.use(new GitStrategy({
+
+  },
+    GitCb.login
   ));
 
 };
