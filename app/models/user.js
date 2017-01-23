@@ -25,10 +25,10 @@ var userSchema = mongoose.Schema({
     name:  String
   },
   github: {
-    id: String,
-  },
-  fitbit: {
-    id: String,
+    id:         String,
+    username:   String,
+    profileUrl: String,
+    token:      String
   }
 
 });
