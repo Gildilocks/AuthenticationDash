@@ -21,7 +21,7 @@ module.exports = {
   'githubAuth' : {
     'clientID': 'GITHUB_CLIENT_ID',
     'clientSecret': 'GITHUB_CLIENT_SECRET',
-    'callbackURL': "http://localhost:8080/auth/github/callback"
+    'callbackURL': 'http://localhost:8080/auth/github/callback'
   }
 
 };

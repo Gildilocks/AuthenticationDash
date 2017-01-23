@@ -86,7 +86,9 @@ module.exports = function(passport) {
 
   // github login --------------------------------------------------------
   passport.use(new GitStrategy({
-
+    clientID: configAuth.githubAuth.clientID,
+    clientSecret: configAuth.githubAuth.clientSecret,
+    callbackURL: configAuth.githubAuth.callbackURL,
   },
     GitCb.login
   ));
