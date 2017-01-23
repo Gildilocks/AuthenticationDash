@@ -10,7 +10,7 @@ module.exports = {
         return done(err);
       }
 
-      if (user) { // if a user is found (update token if needed) and call done on the user
+      if (user) { // if a user is found, update token and call done on the user
 
         user.github.token = accessToken;
 
@@ -21,11 +21,11 @@ module.exports = {
           return done(null, user);
         });
 
-      } else { // make a user, save it, and pass it to done
+      } else { // otherwise, make a user, save it, and pass it to done
         var newUser = new User();
 
         newUser.github.id = profile.id;
-        newUser.github.userName = profile.userName;
+        newUser.github.username = profile.username;
         newUser.github.profileUrl = profile.profileUrl;
         newUser.github.token = accessToken;
 
@@ -36,7 +36,6 @@ module.exports = {
           return done(null, newUser);
         });
       }
-
 
     });
   }
