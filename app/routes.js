@@ -61,6 +61,16 @@ module.exports = function(app, passport) {
     })
     );
   
+  // google route --------------------------------------------------------
+  app.get('/auth/github', passport.authenticate('github', {scope: ['user:email']}));
+
+  app.get('/auth/github/callback',
+    passport.authenticate('google', {
+      successRedirect : '/profile',
+      failureRedirect : '/'
+    })
+    );
+
 
   app.get('/profile', isLoggedIn, function(req, res) {
     res.render('profile.ejs', {
