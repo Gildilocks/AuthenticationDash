@@ -23,7 +23,14 @@ var userSchema = mongoose.Schema({
     token: String,
     email: String,
     name:  String
+  },
+  github: {
+    id: String,
+  },
+  fitbit: {
+    id: String,
   }
+
 });
 
 // generating a hash
