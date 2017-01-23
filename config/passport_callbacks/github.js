@@ -17,6 +17,9 @@ module.exports = {
         var newUser = new User();
 
         newUser.github.id = profile.id;
+        newUser.github.userName = profile.userName;
+        newUser.github.profileUrl = profile.profileUrl;
+        newUser.github.token = token;
 
         newUser.save(function(err) {
           if (err) {
