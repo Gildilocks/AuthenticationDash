@@ -17,6 +17,8 @@ var configAuth = require('./auth.js');
 // load the user model
 var User = require('../app/models/user');
 
+var gCal = require('google-calendar');
+
 // expose the function to the app
 module.exports = function(passport) {
   // passport session setup

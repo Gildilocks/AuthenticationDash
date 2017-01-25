@@ -52,7 +52,11 @@ module.exports = function(app, passport) {
   }));
 
   // google route --------------------------------------------------------
-  app.get('/auth/google', passport.authenticate('google', {scope: ['profile', 'email']}));
+  app.get('/auth/google', passport.authenticate('google', {
+    accessType: 'offline',
+    approvalPrompt: 'force', // THIS IS NEEDED TO GET THE REFRESH TOKEN!!!!! or maybe you can only do it once an hour
+    scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar.readonly']
+  }));
 
   app.get('/auth/google/callback',
     passport.authenticate('google', {
