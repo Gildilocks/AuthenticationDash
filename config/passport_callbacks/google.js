@@ -1,6 +1,4 @@
 var User = require('../../app/models/user');
-var gCal = require('google-calendar');
-
 
 
 module.exports = {
@@ -11,18 +9,9 @@ module.exports = {
 
       // console.log('GOOGLE PROFILE DETAILS:', profile);
       // console.log('GOOGLE TOKEN DETAILS:', token);
-      // console.log('GOOGLE PARAM DETAILS:', params);
+      console.log('GOOGLE PARAM DETAILS:', params);
       console.log('GOOGLE REFRESH TOKEN DETAILS:', refreshToken);
-////////////////
-      // var calendar = new gCal.GoogleCalendar(token);
 
-      // calendar.calendarList.list(function(err, calendarList) {
-      //   if (err) {
-      //     return console.log(err);
-      //   }
-      //   console.log('CALENDER LIST', calendarList);
-      // });
-/////////////////
       User.findOne({'google.id': profile.id}, function(err, user) {
         // if there is an error, stop everything and return that
         // ie an error connecting to the database
