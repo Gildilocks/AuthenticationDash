@@ -10,7 +10,7 @@ module.exports = {
       // console.log('GOOGLE PROFILE DETAILS:', profile);
       // console.log('GOOGLE TOKEN DETAILS:', token);
       console.log('GOOGLE PARAM DETAILS:', params);
-      console.log('GOOGLE REFRESH TOKEN DETAILS:', refreshToken);
+      console.log('GOOGLE REFRESH TOKEN DETAILS:', refreshToken); // ONCE YOU HAVE THE REFRESH TOKEN YOU CAN KEEP USING IT TO GET WORKING ACCESS TOKENS!!!!
 
       User.findOne({'google.id': profile.id}, function(err, user) {
         // if there is an error, stop everything and return that

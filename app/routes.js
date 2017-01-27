@@ -53,8 +53,9 @@ module.exports = function(app, passport) {
 
   // google route --------------------------------------------------------
   app.get('/auth/google', passport.authenticate('google', {
-    accessType: 'offline',
-    approvalPrompt: 'force', // THIS IS NEEDED TO GET THE REFRESH TOKEN!!!!! or maybe you can only do it once an hour
+    accessType: 'offline', // THESE TWO PARAMS ARE NEEDED TO GET THE REFRESH TOKEN!!
+    prompt: 'consent', // APPERENTLY YOU ONLY GET THE REFRESH FOKEN WHEN IT LISTS THE PERMISSIONS AND YOU GIVE CONSENT
+    // approvalPrompt: 'force', 
     scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar.readonly']
   }));
 
