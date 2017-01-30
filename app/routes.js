@@ -58,6 +58,16 @@ module.exports = function(app, passport) {
     failureRedirect: '/connect/local', // redirect back to the signup page if there is an error
     failureFlash: true // allow flash messages
   }));
+  //    ####### UNLINK ROUTE #######
+  app.get('/unlink/local', function(req, res) {
+    var user            = req.user;
+    user.local.email    = undefined;
+    user.local.password = undefined;
+    user.save(function(err) {
+      res.redirect('/profile');
+    });
+  });
+
 
   // facebook route ------------------------------------------------------
   // route to process facebook authentication and login 
@@ -76,6 +86,16 @@ module.exports = function(app, passport) {
       successRedirect: '/profile',
       failureRedirect: '/'
     }));
+  //    ####### UNLINK ROUTE #######
+  app.get('/unlink/facebook', function(req, res) {
+    var user            = req.user;
+    user.facebook.token    = undefined;
+    user.facebook.name = undefined;
+    user.save(function(err) {
+      res.redirect('/profile');
+    });
+  });
+
 
   // twitter route -------------------------------------------------------
   app.get('/auth/twitter', passport.authenticate('twitter'));
@@ -93,6 +113,16 @@ module.exports = function(app, passport) {
       successRedirect: '/profile',
       failureRedirect: '/'
     }));
+  //    ####### UNLINK ROUTE #######
+  app.get('/unlink/twitter', function(req, res) {
+    var user                 = req.user;
+    user.twitter.token       = undefined;
+    user.twitter.displayName = undefined;
+    user.twitter.username    = undefined;
+    user.save(function(err) {
+      res.redirect('/profile');
+    });
+  });
 
 
   // google route --------------------------------------------------------
@@ -122,6 +152,17 @@ module.exports = function(app, passport) {
       successRedirect: '/profile',
       failureRedirect: '/'
     }));
+  //    ####### UNLINK ROUTE #######
+  app.get('/unlink/google', function(req, res) {
+    var user          = req.user;
+    user.google.token = undefined;
+    user.google.email = undefined;
+    user.google.name  = undefined;
+    user.save(function(err) {
+      res.redirect('/profile');
+    });
+  });
+
   
   // github route --------------------------------------------------------
   app.get('/auth/github', passport.authenticate('github', {scope: ['user:email']}));
@@ -141,6 +182,17 @@ module.exports = function(app, passport) {
       successRedirect:'/profile',
       failureRedirect: '/'
     }));
+  //    ####### UNLINK ROUTE #######
+  app.get('/unlink/github', function(req, res) {
+    var user          = req.user;
+    user.github.token = undefined;
+    user.github.profileUrl = undefined;
+    user.github.username   = undefined;
+    user.save(function(err) {
+      res.redirect('/profile');
+    });
+  });
+
 
 };
 
