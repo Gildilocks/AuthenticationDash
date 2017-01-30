@@ -56,7 +56,7 @@ module.exports = function(app, passport) {
     accessType: 'offline', // THESE TWO PARAMS ARE NEEDED TO GET THE REFRESH TOKEN!!
     prompt: 'consent', // APPERENTLY YOU ONLY GET THE REFRESH FOKEN WHEN IT LISTS THE PERMISSIONS AND YOU GIVE CONSENT
     // approvalPrompt: 'force', 
-    scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar.readonly']
+    scope: ['profile', 'email', 'https://www.googleapis.com/auth/calendar.readonly'] // if you want the user to just be able to click to login without repeating consent or approval, only have the scope
   }));
 
   app.get('/auth/google/callback',

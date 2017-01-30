@@ -37,7 +37,7 @@ module.exports = {
 
           // set all of the user data that we need
           newUser.google.id    = profile.id;
-          newUser.google.token = token;
+          newUser.google.token = refreshToken;
           newUser.google.name  = profile.displayName;
           newUser.google.email = profile.emails[0].value; // pull the first email
 
