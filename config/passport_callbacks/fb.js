@@ -6,7 +6,7 @@ module.exports = {
 
       // asynchronous
     process.nextTick(function() {
-
+      console.log('FACEBOOK REFRESH TOKEN:', refreshToken);
       console.log('FACEBOOK PROFILE DETAILS:', profile); // I had to print the profile so I could see what information I could grab from it
       // apperaerntly, even though I specified in the scope that i want email, i still cant have it along with my useranme and gender
 

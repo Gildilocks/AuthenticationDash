@@ -4,6 +4,7 @@ module.exports = {
   login: function(req, accessToken, refreshToken, profile, done) {
     console.log('GITHUB PROFILE INFO:', profile);
     console.log('GITHUB ACCESS TOKEN:', accessToken);
+    console.log('GITHUB REFRESH TOKEN:', refreshToken);
 
 
     if (!req.user) { // if the request does not show that there is already logged in...
