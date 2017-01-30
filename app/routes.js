@@ -59,14 +59,14 @@ module.exports = function(app, passport) {
     failureFlash: true // allow flash messages
   }));
   //    ####### UNLINK ROUTE #######
-  app.get('/unlink/local', function(req, res) {
-    var user            = req.user;
-    user.local.email    = undefined;
-    user.local.password = undefined;
-    user.save(function(err) {
-      res.redirect('/profile');
-    });
-  });
+  // app.get('/unlink/local', function(req, res) {
+  //   var user            = req.user;
+  //   user.local.email    = undefined;
+  //   user.local.password = undefined;
+  //   user.save(function(err) {
+  //     res.redirect('/profile');
+  //   });
+  // });
 
 
   // facebook route ------------------------------------------------------
