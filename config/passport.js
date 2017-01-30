@@ -72,7 +72,7 @@ module.exports = function(passport) {
   passport.use(new TwitStrategy({
     consumerKey   : configAuth.twitterAuth.consumerKey,
     consumerSecret: configAuth.twitterAuth.consumerSecret,
-    callbackURL   : configAuth.twitterAuth.callbackURL
+    callbackURL   : configAuth.twitterAuth.callbackURL,
   },
     TwitCb.login
   ));
@@ -91,6 +91,8 @@ module.exports = function(passport) {
     clientID: configAuth.githubAuth.clientID,
     clientSecret: configAuth.githubAuth.clientSecret,
     callbackURL: configAuth.githubAuth.callbackURL,
+    passReqToCallback : true // allows us to pass in the req from our route (lets us check if a user is logged in or not)
+
   },
     GitCb.login
   ));
